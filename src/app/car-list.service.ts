@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, from, interval} from 'rxjs';
-import { catchError,debounceTime, mergeMap } from 'rxjs/operators';
+import { catchError,debounceTime} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,29 +12,19 @@ const httpOptions = {
 })
 export class CarListService {
 
-  masterURL = "https://itg-prd-recruit.appspot.com/api/vehicles/";
-  detailURL = "https://itg-prd-recruit.appspot.com/api/vehicle/";
+  masterURL = "../assets/cars.json";
+ detailURL = "../assets/car";
 
   constructor(private http: HttpClient) { }
 
   getCars(): Observable<any>{
-    return this.http.get(this.masterURL).pipe(
-
-        mergeMap((car) =>  this.getCarDetails(car))
-      );
-       // this.getCarDetails(car).map(cars=>({cars, car}))
-      // mergeAll();
-
-
-
-        // mergeMap(car =>  this.http.get(this.detail + car.id)));
+    return this.http.get(this.masterURL);
   }
 
-  getCarDetails(car: Observable<any>): Observable<any>{
-    console.log(car);
-    return from(car).pipe(
-      mergeMap(car => <Observable<any>>this.http.get(this.detailURL + car.id)
-    ));
+  getCarDetails(car: string): Observable<any>{
+    // console.log(car);
+    return this.http.get(this.detailURL + car + ".json");
+
 
   }
 

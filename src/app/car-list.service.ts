@@ -14,7 +14,7 @@ const httpOptions = {
 export class CarListService {
 
   masterURL = "https://itg-prd-recruit.appspot.com/api/vehicles/";
- detailURL = "https://itg-prd-recruit.appspot.com/api/vehicle/";
+  detailURL = "https://itg-prd-recruit.appspot.com/api/vehicle/";
 
   constructor(private http: HttpClient) { }
 
@@ -23,19 +23,7 @@ export class CarListService {
   }
 
   getCarDetails(car: Car): Observable<Car>{
-    // console.log(car);
     return this.http.get <Car>(this.detailURL + car.id);
-
-
   }
 
-
-  private handleError<T> (operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
-
-    console.log(error);
-
-    return of(result as T);
-  };
-}
 }

@@ -16,8 +16,6 @@ export class AppComponent {
   constructor(private carListService: CarListService) {}
   ngOnInit() {
     this.getCars();
-    // console.log(this.carList);
-
   }
 
   getCars(): void{
@@ -27,6 +25,6 @@ export class AppComponent {
                                 .pipe(map(details => ({car, details})))),
       toArray()
     )
-    .subscribe(carList=>{this.carList=carList; console.log(carList)});
+    .subscribe(carList=>{this.carList=carList;});
   }
 }

@@ -1,2 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+
+.card{
+  border: .5px solid #ccc;
+  border-radius: 0;
+}
+
+
+.card-body{
+  text-align: center;
+  span{
+    padding: 2px 0;
+  line-height: 1;
+  display: inline-block;
+  border-bottom: 1px solid;
+  border-top: 1px solid;}
+}
+
+.card-price{
+  font-size: 12px;
+  padding: 10px 0;
+}
+.card-desc{
+
+  font-size: 10px;
+}
+.card-img-top{
+border-top-left-radius: 0;
+
+}
+@media (max-width: 640px) {
+ .card{
+   flex-direction: row;
+   img{
+     height: 100%;
+     width: 38%;
+   }
+ }
+ .card-body{
+
+       padding-right: 6rem;
+    text-align: left;
+   span{
+
+   border-bottom: 0;
+  border-top: 0;
+}
+ }
+.card-price{
+     padding: 5px 0;
+   }
+}
+@media (min-width:640px) and (max-width: 768px) {
+    .card{
+      max-width:18rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width:992px){
+  .card{
+    max-width:18rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width:1200px) {
+  .card{
+    max-width:18rem;
+  }
+}
+  @media (min-width: 1200px)  {
+    .card{
+      max-width:18rem;
+    }
+}

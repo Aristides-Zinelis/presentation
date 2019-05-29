@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, from, interval} from 'rxjs';
 import { catchError,debounceTime} from 'rxjs/operators';
+import {Car} from './car';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,8 +13,8 @@ const httpOptions = {
 })
 export class CarListService {
 
-  masterURL = "../assets/cars.json";
- detailURL = "../assets/car";
+  masterURL = "https://itg-prd-recruit.appspot.com/api/vehicles/";
+ detailURL = "https://itg-prd-recruit.appspot.com/api/vehicle/";
 
   constructor(private http: HttpClient) { }
 
@@ -21,9 +22,9 @@ export class CarListService {
     return this.http.get(this.masterURL);
   }
 
-  getCarDetails(car: string): Observable<any>{
+  getCarDetails(car: Car): Observable<Car>{
     // console.log(car);
-    return this.http.get(this.detailURL + car + ".json");
+    return this.http.get <Car>(this.detailURL + car.id);
 
 
   }

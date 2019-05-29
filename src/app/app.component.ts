@@ -23,10 +23,10 @@ export class AppComponent {
   getCars(): void{
     this.carListService.getCars().pipe(
       switchMap(cars=> from(cars)),
-      mergeMap(car => forkJoin(this.carListService.getCarDetails(car.id))
+      mergeMap(car => forkJoin(this.carListService.getCarDetails(car))
                                 .pipe(map(details => ({car, details})))),
       toArray()
     )
-    .subscribe(carList=>{this.carList=carList});
+    .subscribe(carList=>{this.carList=carList; console.log(carList)});
   }
 }

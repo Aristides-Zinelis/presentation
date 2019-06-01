@@ -1,20 +1,113 @@
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+.card-img-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.card{
+  border-radius: 0;
+}
+.card-title{
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0;
+}
 
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (min-width: 320px) {
+  .card{
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    img{
+      align-self: center;
+    }
+    .card-img-top{
+      width: 100%;
+      max-width: 8rem;
+    }
+    .card-body{
+      padding: 0 .4rem;
+      .card-title{
+        font-size: 11px;
+      }
+      .card-price{
+        font-size: 11px;
+      }
+      .card-desc{
+        font-size: 10px;
+        line-height: 1.2;
+      }
+    }
+  }
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .card{
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    img{
+      width: 100%;
+      align-self: center;
+    }
+    .card-img-top{
+      width: 100%;
+      max-width: 100%;
+    }
+    .card-body{
+      padding: 3rem 2rem;
+      text-align: center;
+      width: 100%;
+      span{
+        display: inline-block;
+        border-bottom: 2px solid #000;
+        border-top: 2px solid #000;
+      }
+      .card-title{
+        font-size: 24px;
+        line-height: 1.2;
+      }
+      .card-price{
+        font-size: 20px;
+        padding: 15px 0px;
+      }
+      .card-desc{
+        font-size: 18px;
+        line-height: 1.2;
+      }
+    }
+  }
+}
 
-@include media-breakpoint-up(sm) {
+// Large devices (desktops, 992px and up)
+@media (min-width: 1025px) {
+  .flex-container{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .card{
+    align-items: center;
+    img{
+      width: 100%;
+      align-self: center;
+    }
 
- }
-
-@include media-breakpoint-up(md) {
-
- }
-
-@include media-breakpoint-up(lg) { 
-
- }
-
-@include media-breakpoint-up(xl) {
-
- }
+  .card-body{
+    padding: 1rem 1rem;
+    .card-title{
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    .card-price{
+      font-size: 14px;
+      padding: 15px 0px;
+    }
+    .card-desc{
+      font-size: 12px;
+      line-height: 1.2;
+    }
+   }
+  }
+}

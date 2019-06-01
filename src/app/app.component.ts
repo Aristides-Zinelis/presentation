@@ -12,6 +12,7 @@ import { mergeMap, toArray, switchMap, map} from 'rxjs/operators';
 export class AppComponent {
   title = 'presentation';
   carList;
+  error: boolean;
 
   constructor(private carListService: CarListService) {}
   ngOnInit() {
@@ -24,7 +25,8 @@ export class AppComponent {
       mergeMap(car => forkJoin(this.carListService.getCarDetails(car))
                                 .pipe(map(details => ({car, details})))),
       toArray()
-    )
-    .subscribe(carList=>{this.carList=carList;});
+    ).subscribe((carList)=>{this.carList=carList},
+    error => this.error = true
+    );
   }
 }

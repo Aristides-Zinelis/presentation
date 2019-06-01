@@ -1,5 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:center" *ngIf="error">
+  Ups!!! something when wrong on our side, sorry. :-(
 </div>
 <div class="d-flex flex-container" >
   <div class="card bd-highlight car-wraper"   *ngFor="let car of carList">
